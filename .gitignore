@@ -66,8 +66,8 @@ local.properties
 **/*.dotCover
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
-src/packages/*
-!src/packages/repositories.config
+packages/*
+!packages/repositories.config
 
 ##Stop NCrunch bug where it randomly copies dll's and xml files from depedencies to the root of projects
 !src/lib
