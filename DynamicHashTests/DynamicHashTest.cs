@@ -217,6 +217,18 @@ namespace DynamicHashTests
         }
 
 
+
+        [Test]
+        public void Get_OnNestedArray_CanAccessLength()
+        {
+            d.numbers[123] = 1;
+
+            int result = d.numbers.Length();
+
+            Assert.That(result, Is.EqualTo(124));
+        }
+
+
         [Test]
         public void Set_PropertyAtArrayIndex()
         {

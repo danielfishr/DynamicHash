@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace DynamicHash
 {
+    using Newtonsoft.Json.Linq;
+
+    [Serializable]
     public class DHash : DynamicObject
     {
         // ReSharper disable InconsistentNaming
@@ -22,6 +25,14 @@ namespace DynamicHash
         public DHash(object value)
         {
             _value = value;
+			if (value is JArray)
+            {
+                var values = value as JArray;
+                for(int i =0;i<values.Count;i++)
+                {
+                    _arrayEntries.Add(i.ToString(),values[i]);
+                }
+            }
         }
 
         public object GetField(params string[] propertyNames)
@@ -146,6 +157,40 @@ namespace DynamicHash
 
             if (type == typeof (List<int>))
             {
+                result = _value;
+                return true;
+            }
+
+            if (type == typeof(int[]))
+            {
+                if (_value is JArray)
+                {
+                    var array = _value as JArray;
+					List<int> ints = new List<int>();
+                    foreach (var val in array)
+                    {
+                        ints.Add((int) val);
+                    }
+                    result = ints.ToArray();
+					return true;
+                }
+                result = _value;
+                return true;
+            }
+
+            if (type == typeof(string[]))
+            {
+                if (_value is JArray)
+                {
+                    var array = _value as JArray;
+                    var strings = new List<string>();
+                    foreach (var val in array)
+                    {
+                        strings.Add(val.ToString());
+                    }
+                    result = strings.ToArray();
+                    return true;
+                }
                 result = _value;
                 return true;
             }

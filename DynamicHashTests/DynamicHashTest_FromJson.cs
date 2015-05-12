@@ -13,7 +13,7 @@ namespace DynamicHashTests
         [SetUp]
         public void SetUp()
         {
-            string json = @"{""duck"":""quack"",""isADuck"":true,""age"":5,""foo"":null,""bar"":{baz:1}}";
+            string json = @"{""duck"":""quack"",""isADuck"":true,""age"":5,""foo"":null,""bar"":{baz:1},""numbers"":[0,1,3],""strs"":[""c"",""d""]}";
 
             d = DHash.FromJson(json);
         }
@@ -22,6 +22,34 @@ namespace DynamicHashTests
         public void FromJson_CanSetBool()
         {
             Assert.That((bool)d.isADuck, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void FromJson_ArrayAccess()
+        {
+            Assert.That((object)d.numbers, Is.Not.Null);
+        }
+
+
+        [Test]
+        public void FromJson_ArrayAccess2()
+        {
+            int[] numbers = d.numbers;
+
+            CollectionAssert.AreEquivalent(numbers,new []{0,1,3});
+        }
+
+        [Test]
+        public void FromJson_StringArrayAccess()
+        {
+            string[] strs = d.strs;
+
+            CollectionAssert.AreEquivalent(strs, new[] { "c", "d" });
+        }
+        [Test]
+        public void FromJson_ArrayCount()
+        {
+            Assert.That((int)d.numbers.Length(), Is.EqualTo(3));
         }
 
         [Test]
@@ -42,11 +70,11 @@ namespace DynamicHashTests
             Assert.That((int)d.bar.baz, Is.EqualTo(1));
         }
 
-
         [Test]
         public void FromJson_CanAssignNull()
         {
             Assert.Null((string)d.foo);
         }
+
     }
 }
