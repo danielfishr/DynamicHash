@@ -370,6 +370,12 @@ namespace DynamicHash
                     return true;
                 }
             }
+            if (binder.Name == "ContainsKey")
+            {
+                string key = (string) args[0];
+                result = __names.Contains(key);
+                return true;
+            }
             if (binder.Name == "Merge")
             {
                 foreach (DHash arg in args)

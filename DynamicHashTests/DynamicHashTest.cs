@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DynamicHash;
 using NUnit.Framework;
 using Is = NUnit.Framework.Is;
+// ReSharper disable PossibleNullReferenceException
 
 // ReSharper disable InconsistentNaming
 namespace DynamicHashTests
@@ -346,7 +347,30 @@ namespace DynamicHashTests
 
             Assert.That(d._json, Is.EqualTo(@"{""duck"":""quack"",""isADuck"":true,""age"":5,""foo"":null}"));
         }
-        
+
+        [Test]
+        public void ContainsKey_WhenTrueWorksFine()
+        {
+            d.duck = "quack";
+
+            Assert.That(d.ContainsKey("duck"),Is.True);
+        }
+
+        [Test]
+        public void ContainsKey_WhenCaseWrongWorksFine()
+        {
+            d.duck = "quack";
+
+            Assert.That(d.ContainsKey("Duck"), Is.False);
+        }
+
+        [Test]
+        public void ContainsKey_FalseWorksFine()
+        {
+            d.duck = "quack";
+
+            Assert.That(d.ContainsKey("ABC"), Is.False);
+        }
 
         [Test]
         public void _json_ArrayWithKey()
