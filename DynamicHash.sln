@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicHash", "DynamicHash\DynamicHash.csproj", "{D8BF425D-BA67-472E-9A2E-456198A6A59B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicHashTests", "DynamicHashTests\DynamicHashTests.csproj", "{B9AD8420-A405-46BB-9824-7C5799127613}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicHash.UnitTests", "DynamicHash.UnitTests\DynamicHash.UnitTests.csproj", "{7BDFDE14-1CB1-4889-BEC7-CAEAC1563FF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D8BF425D-BA67-472E-9A2E-456198A6A59B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8BF425D-BA67-472E-9A2E-456198A6A59B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8BF425D-BA67-472E-9A2E-456198A6A59B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9AD8420-A405-46BB-9824-7C5799127613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9AD8420-A405-46BB-9824-7C5799127613}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9AD8420-A405-46BB-9824-7C5799127613}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9AD8420-A405-46BB-9824-7C5799127613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BDFDE14-1CB1-4889-BEC7-CAEAC1563FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BDFDE14-1CB1-4889-BEC7-CAEAC1563FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BDFDE14-1CB1-4889-BEC7-CAEAC1563FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BDFDE14-1CB1-4889-BEC7-CAEAC1563FF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
