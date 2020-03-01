@@ -386,8 +386,8 @@ namespace DynamicHash
                 result = null;
                 return true;
             }
-            dynamic method = _properties[binder.Name];
-            result = method(args[0].ToString(), args[1].ToString());
+
+            result = null;
             return true;
         }
 
