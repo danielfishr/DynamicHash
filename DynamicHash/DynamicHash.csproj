@@ -1,7 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+	  <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Daniel Fisher</Authors>
+	  <Version>0.1.0</Version>
+    <PackageId>DynamicHash</PackageId>
+	  <PackageDescription>DynamicHash</PackageDescription>
+    <RepositoryUrl>https://github.com/danielfishr/DynamicHash</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
