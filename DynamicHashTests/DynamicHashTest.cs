@@ -281,6 +281,7 @@ namespace DynamicHashTests
 
             Assert.That(result, Is.Null);
         }
+
         [Test]
         public void Set_ArrayAsString_AddsString()
         {
@@ -336,7 +337,6 @@ namespace DynamicHashTests
             Assert.That(result, Is.EqualTo("quack"));
         }
 
-
         [Test]
         public void _json_SimpleProperties()
         {
@@ -370,6 +370,16 @@ namespace DynamicHashTests
             d.duck = "quack";
 
             Assert.That(d.ContainsKey("ABC"), Is.False);
+        }
+
+        [Test]
+        public void SettingDecimal_worksAsExpected()
+        {
+            d.decimalValue = 12.5m;
+
+            decimal actual = d.decimalValue;
+
+            Assert.That(actual, Is.EqualTo(12.5m));
         }
 
         [Test]

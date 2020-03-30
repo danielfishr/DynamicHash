@@ -154,7 +154,11 @@ namespace DynamicHash
                 result = Convert.ToDouble(_value);
                 return true;
             }
-
+            if (type == typeof(decimal))
+            {
+                result = Convert.ToDecimal(_value);
+                return true;
+            }
             if (type == typeof (List<int>))
             {
                 result = _value;
