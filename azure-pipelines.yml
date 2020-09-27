@@ -32,7 +32,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    testSelector: 'testAssemblies' # Options: testAssemblies, testPlan, testRun
-    testAssemblyVer2:  **\*Test*.dll
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: '**\*Test*.dll'
     failOnMinTestsNotRun : true
     minimumExpectedTests: 10
