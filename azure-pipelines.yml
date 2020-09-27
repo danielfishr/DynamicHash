@@ -36,3 +36,4 @@ steps:
     testAssemblyVer2: '**\DynamicHashTests.dll'
     failOnMinTestsNotRun : true
     minimumExpectedTests: 10
+    publishRunAttachments: false
