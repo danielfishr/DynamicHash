@@ -1,0 +1,66 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Debug'
+  major: 0
+  minor: 3
+  patch: $[counter(variables['minor'], 0)] #this will reset when we bump minor
+  NugetVersion: $(major).$(minor).$(patch)
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\DynamicHashTests.dll
+      !**\obj\**
+    failOnMinTestsNotRun : true
+    minimumExpectedTests: 10
+    publishRunAttachments: true
+    codeCoverageEnabled: true
+
+- task: NuGetCommand@2
+  displayName: 'NuGet Pack'
+  inputs:
+    command: pack
+    packagesToPack: '**/DynamicHash.csproj'
+    nobuild: true
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'NugetVersion'
+    
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+  
+- task: NuGetCommand@2
+  displayName: 'NuGet Push'
+  inputs:
+    command: push
+    publishVstsFeed: 'first-pipeline/main'
+    allowPackageConflicts: true
