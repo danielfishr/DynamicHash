@@ -40,3 +40,8 @@ steps:
     minimumExpectedTests: 10
     publishRunAttachments: true
     codeCoverageEnabled: true
+
+- task: NuGetCommand@2
+  inputs:
+    command: pack
+    packagesToPack: '**/DynamicHash.sln.csproj'
