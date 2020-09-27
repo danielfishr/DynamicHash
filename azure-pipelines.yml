@@ -44,4 +44,4 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: pack
-    packagesToPack: '**/DynamicHash.sln.csproj'
+    packagesToPack: '**/DynamicHash.csproj'
