@@ -33,6 +33,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
-    testAssemblyVer2: '**\*Test*.dll'
+    testAssemblyVer2: '**\DynamicHashTests.dll'
     failOnMinTestsNotRun : true
     minimumExpectedTests: 10
