@@ -38,4 +38,5 @@ steps:
       !**\obj\**
     failOnMinTestsNotRun : true
     minimumExpectedTests: 10
-    publishRunAttachments: false
+    publishRunAttachments: true
+    codeCoverageEnabled: true
